@@ -15,8 +15,8 @@ public class Q25 {
         return subject;
     }
     static double average(int[] subjectscore) {
-       double avg = subjectscore[0] + subjectscore[1] + subjectscore[2] / 3.0;
-       return avg;
+       double result = subjectscore[0] + subjectscore[1] + subjectscore[2];
+       return result / 3.0;
     }
     static String grade(double average) {
         String grade;
@@ -36,14 +36,18 @@ public class Q25 {
         return grade;
     }
 
-    static void worngCheck(int[] subjectScore) {
-       if (subjectScore[0] < 0 || subjectScore[0] )
+    static void worngCheck(int[] subject) {
+        if (subject[0] < 0 || subject[0] > 100 || subject[1] < 0 || subject[1] > 100 || subject[2] < 0 || subject[2] > 100) {
+            worngPrint();
+        } else {
+            avgPrint(average(subject),grade(average(subject)));
+        }
     }
     static void worngPrint() {
         System.out.println("잘못된 입력입니다.");
     }
-    static void avgPrint(double averge) {
-        System.out.println(averge);
+    static void avgPrint(double averge,String grade) {
+        System.out.println("학점 "+grade + "평균 " +averge);
     }
     public static void main(String[] args) {
         worngCheck(subjectScore());
