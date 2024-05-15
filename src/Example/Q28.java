@@ -18,13 +18,13 @@ public class Q28 {
                 if (c == 1) {
                     star1();
                 } else if (c == 2) {
-
+                    star2();
                 } else if (c == 3) {
-
-                } else if (c == 4) {
-
+                    star3();
                 } else {
+                    star4();
                 }
+
             }
         }
     }
@@ -93,11 +93,15 @@ public class Q28 {
     static void star4() {
         for (int i = 0; i < 5; i++) {
             for (int j = 4; j > i; j--) {
-
+                System.out.println(" ");
             }
+            for (int j = 0; j<i*2-1  ; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
         }
     }
     public static void main(String[] args) {
-
+        play();
     }
 }
