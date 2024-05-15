@@ -1,8 +1,11 @@
-package Day16_Teacher;
+package Day16;
+
+import Day16.AdvancedLevel;
+import Day16.SuperLevel;
 
 public class MainBoard {
     public static void main(String[] args) {
-        Player player = new Player();
+        Day16.Player player = new Day16.Player();
         player.play(5);
 
         AdvancedLevel aLevel = new AdvancedLevel();

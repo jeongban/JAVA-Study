@@ -1,6 +1,6 @@
-package Day16_Teacher;
+package Day16;
 
-public class AICar extends Car1{
+public class AICar extends Day16.Car1 {
     @Override
     public void drive() {
         System.out.println("자율 주행합니다.");

@@ -1,6 +1,6 @@
-package Day16_Teacher;
+package Day16;
 
-public class BeginnerLevel extends PlayerLevel{
+public class BeginnerLevel extends Day16.PlayerLevel {
     @Override
     public void run() {
         System.out.println("천천히 달립니다.");

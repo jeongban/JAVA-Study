@@ -1,4 +1,4 @@
-package Day16_Teacher;
+package Day16;
 
 abstract class Computer{
     abstract void display();

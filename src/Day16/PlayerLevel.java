@@ -1,4 +1,4 @@
-package Day16_Teacher;
+package Day16;
 
 public abstract class PlayerLevel {
     public abstract void run();

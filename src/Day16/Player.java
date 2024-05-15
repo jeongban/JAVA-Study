@@ -1,14 +1,14 @@
-package Day16_Teacher;
+package Day16;
 
 public class Player {
-    private PlayerLevel level;
+    private Day16.PlayerLevel level;
 
     public Player(){
         level = new BeginnerLevel();
         level.showLevleMessage();
     }
 
-    public PlayerLevel getLevel() {
+    public Day16.PlayerLevel getLevel() {
         return level;
     }
     public void upgradeLevel(PlayerLevel level){

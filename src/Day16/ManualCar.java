@@ -1,4 +1,4 @@
-package Day16_Teacher;
+package Day16;
 
 public class ManualCar extends Car1{
     @Override

@@ -1,4 +1,4 @@
-package Day16_Teacher;
+package Day16;
 //3. 테란, 저그
 /*
 테란 -> 마린 3마리

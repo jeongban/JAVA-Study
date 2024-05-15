@@ -1,4 +1,4 @@
-package Day16_Teacher;
+package Day16;
 abstract class Car{
     abstract void run();
     abstract void refuel();

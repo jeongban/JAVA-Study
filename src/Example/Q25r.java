@@ -2,7 +2,7 @@ package Example;
 
 import java.util.Scanner;
 
-public class Q25 {
+public class Q25r {
     static int[] subjectScore() {
         int[] subject = new int[3];
         Scanner sc = new Scanner(System.in);

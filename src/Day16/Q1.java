@@ -1,4 +1,4 @@
-package Day16_Teacher;
+package Day16;
 //1. 유닛
 /*
 속성 - 가격,에너지,공격력,방어력,타겟,스피트,유닛특성
