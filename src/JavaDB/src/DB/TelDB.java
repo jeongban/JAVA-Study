@@ -1,4 +1,4 @@
-package DB;
+package JavaDB.src.DB;
 
 import java.sql.*;
 import java.util.Scanner;
