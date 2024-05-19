@@ -1,5 +1,8 @@
 package Example;
 
+import java.awt.*;
+import java.util.Scanner;
+
 class PencilCase {
     ColorPen cp1;
     ColorPen cp2;
@@ -87,19 +90,133 @@ class Stationery {
         for (int i = 0; i < e.length; i++) {
             e[i] = new Eraser36(color2[i]);
         }
+    }
+}
 
+class Controller {
+    void buyColorPencil(Stationery st, Student s, String color) {
+        int i = 0;
+        for (i = 0; i < st.cp.length; i++) {
+            if (st.cp[i] != null) {
+                if (st.cp[i].color.equals(color)) {
+                    if (s.p.cp1 == null) {
+                        s.p.cp1 = st.cp[i];
+                    } else {
+                        s.p.cp2 = st.cp[i];
+                    }
+                    st.cp[i] = null;
+                    System.out.println(s.name + "이 구매했습니다.");
+                    break;
+                }
+            }
+        }
+        if (i == st.cp.length) {
+            System.out.println("품절입니다.");
+        }
+    }
+    void buyEraser(Stationery st, Student s, String color) {
+        int i;
+        for (i = 0; i < st.e.length; i++) {
+            if (st.e[i] != null) {
+                if (st.e[i].color.equals(color)) {
+                    if (s.p.e1 == null) {
+                        s.p.e1 = st.e[i];
+                    }
+                    st.e[i] = null;
+                    System.out.println(s.name + "이 구매했습니다");
+                }
+            }
+        }
+        if (i == st.e.length) {
+            System.out.println("품절입니다.");
+        }
     }
 
+    void buyPen(Stationery st, Student s, String color) {
+        int i;
+        for (i = 0; i < st.p.length; i++) {
+            if (st.p[i] != null) {
+                if (st.p[i].color.equals(color)) {
+                    if (s.p.p1 == null) {
+                        s.p.p1 = st.p[i];
+                    } else {
+                        s.p.p2 = st.p[i];
+                    }st.p[i] = null;
+                    System.out.println(s.name + "이 구매했습니다");
+                }
+            }
+        }
+        if (i == st.p.length) {
+            System.out.println("품절입니다.");
+        }
 
-
-
-
-
+    }
 }
 
 public class Q36 {
     public static void main(String[] args) {
+        Stationery stationery = new Stationery();
+        Student s1 = new Student("A학생");
+        Student s2 = new Student("B학생");
+        Scanner sc = new Scanner(System.in);
+        Controller c = new Controller();
 
-
+        while (s1.checkCP()) {
+            System.out.println(s1.name+"의 색연필 색을 골라주세요.");
+            String color = sc.next();
+            if (color.equals("주황색") || color.equals("초록색") || color.equals("노란색") || color.equals("파란색")) {
+                c.buyColorPencil(stationery, s1, color);
+            }else{
+            System.out.println("잘못된 입력");
+            }
+        }
+        while (s2.checkCP()) {
+            System.out.println(s2.name+"의 색연필 색을 골라주세요.");
+            String color = sc.next();
+            if (color.equals("주황색") || color.equals("초록색") || color.equals("노란색") || color.equals("파란색")) {
+                c.buyColorPencil(stationery, s2, color);
+            } else {
+                System.out.println("잘못된 입력");
+            }
+        }
+        while (s1.checkE()) {
+            System.out.println(s1.name + "의 지우개 색을 골라주세요");
+            String color = sc.next();
+            if (color.equals("회색") || color.equals("빨간색")) {
+                c.buyEraser(stationery, s1, color);
+            } else {
+                System.out.println("잘못된 입력");
+            }
+        }
+        while (s2.checkE()) {
+            System.out.println(s2.name + "의 지우개 색을 골라주세요.");
+            String color = sc.next();
+            if (color.equals("회색") || color.equals("빨간색")) {
+                c.buyEraser(stationery, s2, color);
+            } else {
+                System.out.println("잘못된 입력");
+            }
+        }
+        while (s1.checkP()) {
+            System.out.println(s1.name + "의 펜 색을 골라주세요");
+            String color = sc.next();
+            if (color.equals("주황색") || color.equals("초록색") || color.equals("노란색") || color.equals("파란색")) {
+                c.buyPen(stationery, s1, color);
+            } else {
+                System.out.println("잘못된 입력");
+            }
+        }
+        while (s2.checkP()) {
+            System.out.println(s2.name + "의 펜 색을 골라주세요");
+            String color = sc.next();
+            if (color.equals("주황색") || color.equals("초록색") || color.equals("노란색") || color.equals("파란색")) {
+                c.buyPen(stationery, s2, color);
+            } else {
+                System.out.println("잘못된 입력");
+            }
+        }
+        s1.pencilCasePrint();
+        s2.pencilCasePrint();
     }
+
 }

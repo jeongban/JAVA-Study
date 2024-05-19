@@ -97,22 +97,21 @@ class Controller{
     //연필, 지우개, 펜을 사는 기능을 여기에 만든다.
     void buyPencil(MunbangGu m,Student s,String color){
         int i;
-        for(i = 0;i<m.cpc.length;i++){
-            if(m.cpc[i] != null) {
-                if (m.cpc[i].color.equals(color)) {
-                    if (s.p.cpc1 == null) {
-                        s.p.cpc1 = m.cpc[i];
-                    } else {
-                        s.p.cpc2 = m.cpc[i];
+        for(i = 0;i<m.cpc.length;i++){//문방구의 색연필 배열 크기만큼 반복
+            if(m.cpc[i] != null) {//문방구의 배열에 null이 없으면
+                if (m.cpc[i].color.equals(color)) {//문방구의 색연필의 색이 입력 색과 같으면
+                    if (s.p.cpc1 == null) {//학생의 필통의 색연필1 변수가 null이면
+                        s.p.cpc1 = m.cpc[i];//학생의 필통 색연필1 변수에 문방구 색연필 대입
+                    } else {//학생의 필통의 색연필1 변수가 null이 아니면
+                        s.p.cpc2 = m.cpc[i];//학생의 필통의 색연필2 변수에 색연필 대입
                     }
-                    m.cpc[i] = null;
+                    m.cpc[i] = null;//선택된 문방구 배열에 null 대입
                     System.out.println(s.name + "학생이 샀습니다.");
                     break;
                 }
             }
         }
-
-        if(i == m.cpc.length){
+        if(i == m.cpc.length){//문방구의 색연필 배열에 찾는 색이 없으면
             System.out.println("벌써 팔렸습니다.");
         }
     }
