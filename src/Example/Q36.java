@@ -42,11 +42,11 @@ class Student {
     }
     void pencilCasePrint() {
         System.out.println(name + "이 구매한 목록");
-        System.out.println(p.cp1 + " 색연필");
-        System.out.println(p.cp2 + " 색연필");
-        System.out.println(p.e1 + " 지우개");
-        System.out.println(p.p1 + " 펜");
-        System.out.println(p.p2 + " 펜");
+        System.out.println(p.cp1.color + " 색연필");
+        System.out.println(p.cp2.color + " 색연필");
+        System.out.println(p.e1.color + " 지우개");
+        System.out.println(p.p1.color + " 펜");
+        System.out.println(p.p2.color + " 펜");
     }
 }
 
@@ -124,6 +124,7 @@ class Controller {
                     }
                     st.e[i] = null;
                     System.out.println(s.name + "이 구매했습니다");
+                    break;
                 }
             }
         }
@@ -143,6 +144,7 @@ class Controller {
                         s.p.p2 = st.p[i];
                     }st.p[i] = null;
                     System.out.println(s.name + "이 구매했습니다");
+                    break;
                 }
             }
         }
