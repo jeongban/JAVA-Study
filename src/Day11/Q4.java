@@ -10,9 +10,9 @@ public class Q4 {
     }
 
     static String makeResult(String str){
-        //1122335*#66
+        //11 22 33 5 * #  66
         //1.카운팅
-        char ch = str.charAt(0); // '1'
+        char ch = str.charAt(0); // '1' charat : 문자열에서 선택한 인덱스의 문자를 추출
         int count = 0;
         String result = "";
         for(int i = 0;i<str.length();i++){
