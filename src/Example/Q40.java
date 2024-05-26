@@ -68,6 +68,7 @@ class Mart {
     Aircondition[] air = new Aircondition[10];
     Refrigerator[] r = new Refrigerator[10];
     Aircleaner[] ac = new Aircleaner[10];
+    int index = -1;
 
     Mart() {
         for (int i = 0; i < 10; i++) {
@@ -84,6 +85,62 @@ class Mart {
             }
         }
     }
+    Computer sendComputer(String made) {
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] != null) {
+                if (c[i].made.equals(made)) {
+                    index = i;
+                    return c[i];
+                }
+            }
+        }
+        return null;
+    }
+    Aircondition sendAircondition(String made) {
+        for (int i = 0; i < air.length; i++) {
+            if (air[i] != null) {
+                if (air[i].made.equals(made)) {
+                    index = i;
+                    return air[i];
+                }
+            }
+        }
+        return null;
+    }
+    Refrigerator sendRefrigerator(String made) {
+        for (int i = 0; i < r.length; i++) {
+            if (r[i] != null) {
+                if (r[i].made.equals(made)) {
+                    index = i;
+                    return r[i];
+                }
+            }
+        }
+        return null;
+    }
+    Aircleaner sendAirCleaner(String made) {
+        for (int i = 0; i < ac.length; i++) {
+            if (ac[i] != null) {
+                if (ac[i].made.equals(made)) {
+                    index = i;
+                    return ac[i];
+                }
+            }
+        }
+        return null;
+    }
+    void nullChangeComputer() {
+        c[index] = null;
+    }
+    void nullChangeAircondirion() {
+        air[index] = null;
+    }
+    void nullChangeRefrigerator() {
+        r[index] = null;
+    }
+    void nullChangeAircleaner() {
+        ac[index] = null;
+    }
 }
 
 class Consumer {
@@ -92,6 +149,55 @@ class Consumer {
     Refrigerator[] r = new Refrigerator[10];
     Aircleaner[] ac = new Aircleaner[10];
     int money = 0;
+
+    void receiveComputer(Computer com) {
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] == null) {
+                c[i] = com;
+                break;
+            }
+        }
+    }
+    void receiveAircondition(Aircondition a) {
+        for (int i = 0; i < air.length; i++) {
+            if (air[i] == null) {
+                air[i] = a;
+                break;
+            }
+        }
+    }
+    void receiveRefrigerator(Refrigerator ref) {
+        for (int i = 0; i < r.length; i++) {
+            if (r[i] == null) {
+                r[i] = ref;
+                break;
+            }
+        }
+    }
+    void receiveAirCleaner(Aircleaner acl) {
+        for (int i = 0; i < ac.length; i++) {
+            if (ac[i] == null) {
+                ac[i] = acl;
+                break;
+            }
+        }
+    }
+    void allPrint() {;
+        for (int i = 0; i < 10; i++) {
+            if (c[i] != null) {
+                c[i].print();
+            }
+            if (air[i] != null) {
+                air[i].print();
+            }
+            if (r[i] != null) {
+                r[i].print();
+            }
+            if (ac[i] != null) {
+                ac[i].print();
+            }
+        }
+    }
 }
 
 public class Q40 {
@@ -116,13 +222,27 @@ public class Q40 {
                         int choose2 = sc.nextInt();
                         if (choose2 == 1) {//200
                             if (con[i].money >= 200) {
-
+                                Computer c = m.sendComputer("삼성");
+                                if (c == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money -= c.price;
+                                    con[i].receiveComputer(c);
+                                    m.nullChangeComputer();
+                                }
                             } else {
                                 System.out.println("금액이 부족합니다.");
                             }
                         } else if (choose2 == 2) {//150
                             if (con[i].money >= 150) {
-
+                                Computer c = m.sendComputer("LG");
+                                if (c == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money -= c.price;
+                                    con[i].receiveComputer(c);
+                                    m.nullChangeComputer();
+                                }
                             } else {
                                 System.out.println("금액이 부족합니다.");
                             }
@@ -134,12 +254,27 @@ public class Q40 {
                         int choose2 = sc.nextInt();
                         if (choose2 == 1) {//100
                             if (con[i].money >= 100) {
-
+                                Aircondition a = m.sendAircondition("삼성");
+                                if (a == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money = -a.price;
+                                    con[i].receiveAircondition(a);
+                                    m.nullChangeAircondirion();
+                                }
                             } else {
                                 System.out.println("금액이 부족합니다.");
                             }
                         } else if (choose2 == 2) {//250
                             if (con[i].money >= 250) {
+                                Aircondition a = m.sendAircondition("LG");
+                                if (a == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money -= a.price;
+                                    con[i].receiveAircondition(a);
+                                    m.nullChangeAircondirion();
+                                }
 
                             } else {
                                 System.out.println("금액이 부족합니다.");
@@ -152,13 +287,27 @@ public class Q40 {
                         int choose2 = sc.nextInt();
                         if (choose2 == 1) {//200
                             if (con[i].money >= 200) {
-
+                                Refrigerator r = m.sendRefrigerator("삼성");
+                                if (r == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money -= r.price;
+                                    con[i].receiveRefrigerator(r);
+                                    m.nullChangeRefrigerator();
+                                }
                             } else {
                                 System.out.println("금액이 부족합니다.");
                             }
                         } else if (choose2 == 2) {//350
                             if (con[i].money >= 350) {
-
+                                Refrigerator r = m.sendRefrigerator("LG");
+                                if (r == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money -= r.price;
+                                    con[i].receiveRefrigerator(r);
+                                    m.nullChangeRefrigerator();
+                                }
                             } else {
                                 System.out.println("금액이 부족합니다.");
                             }
@@ -166,17 +315,31 @@ public class Q40 {
                             System.out.println("잘못된 입력");
                         }
                     } else if (choose1 == 4) {//공기청정기
-                        System.out.println("제조사 및 사양을 선택 해주세요. 1.LG 2.다이슨");
+                         System.out.println("제조사 및 사양을 선택 해주세요. 1.LG 2.다이슨");
                         int choose2 = sc.nextInt();
                         if (choose2 == 1) {//80
                             if (con[i].money >= 80) {
-
+                                Aircleaner a = m.sendAirCleaner("LG");
+                                if (a == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money -= a.price;
+                                    con[i].receiveAirCleaner(a);
+                                    m.nullChangeAircleaner();
+                                }
                             } else {
                                 System.out.println("금액이 부족합니다.");
                             }
                         } else if (choose2 == 2) {//60
                             if (con[i].money >= 60) {
-
+                                Aircleaner a = m.sendAirCleaner("다이슨");
+                                if (a == null) {
+                                    System.out.println("품절입니다.");
+                                } else {
+                                    con[i].money -= a.price;
+                                    con[i].receiveAirCleaner(a);
+                                    m.nullChangeAircleaner();
+                                }
                             } else {
                                 System.out.println("금액이 부족합니다.");
                             }
@@ -188,6 +351,9 @@ public class Q40 {
                     }
                 }
             }
+        }
+        for (int i = 0; i < con.length; i++) {
+            con[i].allPrint();
         }
     }
 }
